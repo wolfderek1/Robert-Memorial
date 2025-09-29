@@ -1,55 +1,110 @@
-# In Loving Memory of Robert Nicholas Estrada
+# Robert Memorial Website
 
-*February 2, 1999 - September 29, 2025*
+A memorial website with an interactive message board that saves messages to a local server.
 
-## About This Memorial
-
-This website celebrates the life and memories of Robert Nicholas Estrada, a dedicated registered nurse who touched many lives through his work at Methodist Hospital and his unwavering loyalty to the Dallas Cowboys (despite their annual disappointments).
-
-## 🌐 Live Memorial
-
-Visit the memorial at: [Your GitHub Pages URL will go here]
+*In Loving Memory of Robert Nicholas Estrada - February 2, 1999 - September 29, 2025*
 
 ## Features
 
-- 📱 **Mobile Optimized** - Perfect viewing on all devices
-- 🖼️ **Photo Gallery** - Images and videos with lightbox viewing
-- 📊 **Dynamic Stats** - Live counters with localStorage persistence
-- 🎨 **Beautiful Design** - Professional memorial layout
-- 🔄 **Interactive** - Smooth animations and transitions
-- 💾 **Offline Ready** - Works without internet connection
+- **Interactive Message Board**: Visitors can submit condolences and memories
+- **Server-Side Storage**: Messages are saved to a local JSON file on the server
+- **Real-time Updates**: Messages are displayed immediately after submission
+- **Like System**: Visitors can like messages, with counts saved to the server
+- **Auto-incrementing Statistics**: Some stats update automatically over time
+- **Photo Gallery**: Display photos and videos with lightbox functionality
+- **Responsive Design**: Works on desktop and mobile devices
 
-## Memorial Sections
+## Quick Start
 
-- **Home** - Portrait and life overview
-- **Life Story** - Biography and achievements  
-- **Photos** - Gallery of memories
-- **Memories** - Shared stories and tributes
-- **Services** - Memorial service information
-- **Condolences** - Guest book for messages
+1. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
 
-## Technical Details
+2. **Start the Server**:
+   ```bash
+   npm start
+   # or use the start script:
+   ./start-server.sh
+   ```
 
-- **Pure HTML/CSS/JavaScript** - No frameworks required
-- **Responsive Design** - Mobile-first approach
-- **Cross-browser Compatible** - Works on all modern browsers
-- **Accessibility** - Screen reader friendly
-- **Performance Optimized** - Fast loading times
+3. **Open in Browser**:
+   Visit `http://localhost:3000`
 
-## Usage
+## How the Message Board Works
 
-The main memorial page is `memorial.html`. All assets are contained in:
-- `styles/` - CSS styling
-- `js/` - JavaScript functionality  
-- `pics/` - Photos and videos
+### Frontend (Website)
+- Users fill out the condolences form with their name, relationship, and message
+- JavaScript sends the data to the server via POST request to `/api/messages`
+- New messages are displayed immediately on the page
+- Existing messages are loaded when the page loads
 
-## Sharing
+### Backend (Server)
+- **Express.js server** runs on port 3000
+- **Message storage**: All messages are saved to `/data/messages.json`
+- **API endpoints**:
+  - `GET /api/messages` - Load all existing messages
+  - `POST /api/messages` - Save a new message
+  - `POST /api/messages/:id/like` - Like a specific message
 
-This memorial can be easily shared via:
-- Direct link
-- Social media
-- Email or text message
-- QR code generation
+### Data Storage
+- Messages are stored in `/data/messages.json` as an array
+- Each message includes:
+  - Unique ID and timestamp
+  - Name, email (optional), relationship
+  - Message content
+  - Like count
+
+### Message Format
+```json
+{
+  "id": "1695984000000",
+  "name": "John Doe",
+  "email": "john@example.com",
+  "relationship": "friend",
+  "message": "Robert was an amazing person...",
+  "timestamp": "2025-09-29T12:00:00.000Z",
+  "likes": 5
+}
+```
+
+## File Structure
+
+```
+/workspaces/Robert-Memorial/
+├── index.html          # Main website file
+├── server.js           # Node.js server
+├── package.json        # Dependencies
+├── start-server.sh     # Startup script
+├── data/
+│   └── messages.json   # Stored messages
+├── pics/               # Photos and videos
+├── js/
+│   └── main.js         # Additional JavaScript
+└── styles/
+    └── main.css        # Additional styles
+```
+
+## Server Endpoints
+
+- `GET /` - Serves the main website
+- `GET /api/messages` - Returns all messages as JSON
+- `POST /api/messages` - Accepts new message submissions
+- `POST /api/messages/:id/like` - Increments like count for a message
+
+## Development
+
+To run in development mode with auto-restart:
+```bash
+npm run dev
+```
+
+## Notes
+
+- Messages persist between server restarts
+- The server creates the `data` directory automatically if it doesn't exist
+- All messages are stored locally - no external database required
+- The website works offline except for the message submission feature
 
 ---
 
