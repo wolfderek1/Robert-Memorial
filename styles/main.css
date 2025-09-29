@@ -1002,4 +1002,87 @@ body {
         top: -35px;
         font-size: 25px;
     }
+
+    /* Stats and message board stacking */
+    .tribute-stats, .stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .stat-item {
+        padding: 1.2rem;
+        font-size: 1.1rem;
+    }
+
+    .stat-number {
+        font-size: 2.2rem;
+    }
+
+    .stat-label {
+        font-size: 1rem;
+    }
+
+    /* Message board post spacing */
+    .condolence-post {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+
+    .post-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .author-avatar {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
+    }
+
+    .post-date {
+        font-size: 0.85rem;
+    }
+
+    .post-content p {
+        font-size: 0.95rem;
+    }
+
+    .like-btn {
+        min-height: 44px;
+        min-width: 44px;
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+    }
+
+    /* Form fields and buttons */
+    #condolencesForm input,
+    #condolencesForm textarea,
+    #condolencesForm select {
+        font-size: 1.05rem;
+        min-height: 44px;
+        padding: 12px;
+    }
+
+    #condolencesForm .btn-primary {
+        font-size: 1.1rem;
+        padding: 16px;
+        min-height: 48px;
+    }
+
+    .form-group label {
+        font-size: 1rem;
+    }
+
+    .add-condolence-section {
+        padding: 1rem;
+    }
+
+    .blog-header h3 {
+        font-size: 1.2rem;
+    }
+
+    .blog-subtitle {
+        font-size: 0.95rem;
+    }
 }
